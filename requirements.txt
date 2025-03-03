@@ -1,0 +1,9 @@
+pypdf
+langchain
+langchain_community
+langchain_ollama
+faiss-cpu
+sentence-transformers
+tqdm
+cryptography>=3.1
+numpy
