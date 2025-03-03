@@ -57,11 +57,14 @@ OLLAMA_MODEL=mistral ./docker-run.sh run query --index /app/output/index.pkl --q
 ### Customizing Environment Variables
 
 ```bash
+# Build the Docker image
+HTTP_TIMEOUT=1800 DISABLE_HF_TRANSFER=true ./docker-run.sh clean-rebuild
+
 # Customize textbooks path
-TEXTBOOKS_PATH="/path/to/your/books" ./docker-run.sh run build --textbooks /textbooks --output /app/output/index.pkl
+INDEX_PATH="$HOME/.rag-index" MODELS_PATH="$HOME/.rag-models" OLLAMA_MODEL="tinyllama" TEXTBOOKS_PATH="$HOME/Google Drive/My Drive/Books/Test" ./docker-run.sh run build --textbooks /textbooks --output /index/index.pkl
 
 # Customize Ollama model
-OLLAMA_MODEL="llama3:8b" ./docker-run.sh run query --index /app/output/index.pkl --question "What is deep learning?"
+INDEX_PATH="$HOME/.rag-index" MODELS_PATH="$HOME/.rag-models" OLLAMA_MODEL="tinyllama" ./docker-run.sh run query --index /app/output/index.pkl --model tinyllama --question "What is deep learning?"
 
 # Customize HTTP timeout for slow connections
 HTTP_TIMEOUT="1200" ./docker-run.sh run query --index /app/output/index.pkl --question "What is deep learning?"

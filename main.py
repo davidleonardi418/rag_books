@@ -74,13 +74,13 @@ def main():
     query_parser = subparsers.add_parser("query", help="Query the RAG system")
     query_parser.add_argument("--index", required=True, help="Path to the index file")
     query_parser.add_argument("--question", required=True, help="Question to ask")
-    query_parser.add_argument("--model", default="llama3", help="Ollama model to use")
+    query_parser.add_argument("--model", default="tinyllama", help="Ollama model to use")
     query_parser.add_argument("--num-results", type=int, default=5, help="Number of results to retrieve")
     
     # Interactive command
     interactive_parser = subparsers.add_parser("interactive", help="Run in interactive mode")
     interactive_parser.add_argument("--index", required=True, help="Path to the index file")
-    interactive_parser.add_argument("--model", default="llama3", help="Ollama model to use")
+    interactive_parser.add_argument("--model", default="tinyllama", help="Ollama model to use")
     interactive_parser.add_argument("--num-results", type=int, default=5, help="Number of results to retrieve")
     
     args = parser.parse_args()
